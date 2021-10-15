@@ -1,9 +1,18 @@
+import requests
+
+
 class Wazirx:
     def __init__(self):
         self.base = 'https://api.wazirx.com/'
 
     def get_market_status(self):
         api_url = self.base + '/api/v2/market-status'
+        r = requests.get(api_url)
+        print(r.status_code)
+        print(r.headers['content-type'])
+        print(r.encoding)
+        print(r.text)
+        print(r.json())
 
     def get_ticker(self):
         api_url = self.base + '/api/v2/tickers'
@@ -20,4 +29,4 @@ class Wazirx:
 
 if __name__ == '__main__':
     wzx = Wazirx()
-    wzx.get_price()
+    wzx.get_market_status()
